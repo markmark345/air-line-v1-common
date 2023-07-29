@@ -6,9 +6,9 @@ type Response struct {
 }
 
 type Status struct {
-	Code        int     `json:"code"`
-	Description string  `json:"description"`
-	Details     Details `json:"details,omitempty"`
+	Code        int         `json:"code"`
+	Description string      `json:"description"`
+	Details     interface{} `json:"details,omitempty"`
 }
 
 type Details struct {
