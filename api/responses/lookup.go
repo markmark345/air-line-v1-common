@@ -13,6 +13,13 @@ var lookups = []model.Lookup{
 		DescTH:   "สำเร็จ",
 	},
 	{
+		Key:      "user_not_found",
+		HTTPCode: 200,
+		Code:     5001,
+		DescEN:   "Current user not found",
+		DescTH:   "ไม่พบบัญชีผู้ใช้ปัจจุบัน",
+	},
+	{
 		Key:      "internal_server_error",
 		HTTPCode: 500,
 		Code:     9999,
