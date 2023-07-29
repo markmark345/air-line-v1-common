@@ -8,7 +8,7 @@ type Response struct {
 type Status struct {
 	Code        int    `json:"code"`
 	Description string `json:"description"`
-	Details     `json:"data,omitempty"`
+	Details     `json:"details,omitempty"`
 }
 
 type Details struct {
