@@ -22,12 +22,33 @@ func Success(ctx *gin.Context, msgKey string, datas interface{}) {
 	ctx.JSON(dataLookup.HTTPCode, res)
 }
 
-// func Write(ctx *gin.Context, res interface{}) error {
-// 	var httpCode int
-// 	// var code int
-// 	// var description string
+func Failure(ctx *gin.Context, msgKey string, details interface{}) {
+	dataLookup, err := GetLookup(msgKey)
+	if err != nil {
+		ctx.JSON(500, err)
+	}
 
-// 	return ctx.JSON(httpCode, res)
-// }
+	res := &model.Response{
+		Status: model.Status{
+			Code:        dataLookup.Code,
+			Description: dataLookup.DescEN,
+			Details:     details,
+		},
+	}
 
-// , res interface{} ctx *gin.Context,
+	ctx.JSON(dataLookup.HTTPCode, res)
+}
+
+func Error(ctx *gin.Context, err error) {
+	res := &model.Response{
+		Status: model.Status{
+			Code:        9999,
+			Description: "Internal Server Error",
+			Details: model.Details{
+				Error: err,
+			},
+		},
+	}
+
+	ctx.JSON(500, res)
+}
