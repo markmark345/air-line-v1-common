@@ -1,51 +1,37 @@
 package responses
 
 import (
-	"encoding/json"
-	"io/ioutil"
-
 	"github.com/markmark345/air-line-v1-common/api/responses/model"
 )
 
+var lookups = []model.Lookup{
+	{
+		Key:      "success",
+		HTTPCode: 200,
+		Code:     1000,
+		DescEN:   "Success",
+		DescTH:   "สำเร็จ",
+	},
+	{
+		Key:      "internal_server_error",
+		HTTPCode: 500,
+		Code:     9999,
+		DescEN:   "Internal Server Error",
+		DescTH:   "ข้อผิดพลาดภายในเซิร์ฟเวอร์",
+	},
+}
 
 func GetLookup(msgKey string) (*model.Lookup, *model.Response) {
-	jsonData, err := ioutil.ReadFile("./lookup.json")
-	if err != nil {
-		res := &model.Response{
-			Status: model.Status {
-				Code: 500,
-				Description: "Internal Server Error",
-				Details: model.Details{
-					Source: "common.GetLookup",
-					Reason: "lookup read file error",
-					Error: err,
-				},
-			},
-		}
-		return nil, res
-	}
-
-	var data map[string]model.Lookup
-	if err := json.Unmarshal(jsonData, &data); err != nil {
-		res := &model.Response{
-			Status: model.Status {
-				Code: 500,
-				Description: "Internal Server Error",
-				Details: model.Details{
-					Source: "common.GetLookup",
-					Reason: "lookup json unmarshal error",
-					Error: err,
-				},
-			},
-		}
-		return nil, res
+	data := make(map[string]model.Lookup)
+	for _, lookup := range lookups {
+		data[lookup.Key] = lookup
 	}
 
 	getKey, ok := data[msgKey]
 	if !ok {
 		res := &model.Response{
-			Status: model.Status {
-				Code: 500,
+			Status: model.Status{
+				Code:        500,
 				Description: "Internal Server Error",
 				Details: model.Details{
 					Source: "common.GetLookup",
@@ -57,11 +43,11 @@ func GetLookup(msgKey string) (*model.Lookup, *model.Response) {
 	}
 
 	result := &model.Lookup{
-		Key: getKey.Key,
+		Key:      getKey.Key,
 		HTTPCode: getKey.HTTPCode,
-		Code: getKey.Code,
-		DescEN: getKey.DescEN,
-		DescTH: getKey.DescTH,
+		Code:     getKey.Code,
+		DescEN:   getKey.DescEN,
+		DescTH:   getKey.DescTH,
 	}
 
 	return result, nil
