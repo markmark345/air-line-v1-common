@@ -45,7 +45,7 @@ func Error(ctx *gin.Context, err error) {
 			Code:        9999,
 			Description: "Internal Server Error",
 			Details: model.Details{
-				Error: err,
+				Error: err.Error(),
 			},
 		},
 	}
