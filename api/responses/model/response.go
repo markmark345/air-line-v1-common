@@ -2,7 +2,7 @@ package model
 
 type Response struct {
 	Status `json:"status"`
-	Data   struct{} `json:"data,omitempty"`
+	Data   interface{} `json:"data,omitempty"`
 }
 
 type Status struct {

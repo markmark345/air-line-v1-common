@@ -5,7 +5,7 @@ import (
 	"github.com/markmark345/air-line-v1-common/api/responses/model"
 )
 
-func Success(ctx *gin.Context, msgKey string, data interface{})  {
+func Success(ctx *gin.Context, msgKey string, datas interface{})  {
 	dataLookup, err := GetLookup(msgKey)
 	if err != nil {
 		ctx.JSON(500, err)
@@ -16,6 +16,7 @@ func Success(ctx *gin.Context, msgKey string, data interface{})  {
 			Code: dataLookup.Code,
 			Description: dataLookup.DescEN,
 		},
+		Data: datas,
 	}
 
 	ctx.JSON(dataLookup.HTTPCode, res)
