@@ -12,7 +12,7 @@ type Status struct {
 }
 
 type Details struct {
-	Source string `json:"source,omitempty"`
-	Reason string `json:"reason,omitempty"`
-	Error  error  `json:"error,omitempty"`
+	Source string      `json:"source,omitempty"`
+	Reason string      `json:"reason,omitempty"`
+	Error  interface{} `json:"error,omitempty"`
 }
