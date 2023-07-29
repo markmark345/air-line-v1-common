@@ -1,0 +1,16 @@
+{
+    "success": {
+        "key": "success",
+        "http_code": 200,
+        "code": 1000,
+        "descEN": "Success",
+        "descTH": "สำเร็จ"
+    },
+    "internal_server_error": {
+        "key": "internal_server_error",
+        "http_code": 500,
+        "code": 9999,
+        "descEN": "Internal Server Error",
+        "descTH": "ข้อผิดพลาดภายในเซิร์ฟเวอร์"
+    }
+}
