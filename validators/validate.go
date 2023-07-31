@@ -8,7 +8,7 @@ import (
 	"github.com/markmark345/air-line-v1-common/api/responses"
 )
 
-func validate(ctx *gin.Context, err error) {
+func validateCustomError(ctx *gin.Context, err error) {
 	if err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Tag() {
@@ -36,5 +36,4 @@ func validate(ctx *gin.Context, err error) {
 			}
 		}
 	}
-	return
 }
