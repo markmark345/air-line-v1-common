@@ -36,4 +36,5 @@ func validate(ctx *gin.Context, err error) {
 			}
 		}
 	}
+	return
 }
