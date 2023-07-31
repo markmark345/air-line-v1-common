@@ -1,4 +1,4 @@
-package validators
+package custom
 
 import (
 	"errors"
@@ -36,4 +36,5 @@ func validateCustomError(ctx *gin.Context, err error) {
 			}
 		}
 	}
+	// return err
 }
