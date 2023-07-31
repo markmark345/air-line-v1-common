@@ -1,8 +1,6 @@
 package responses
 
-import (
-	"github.com/markmark345/air-line-v1-common/api/responses/model"
-)
+import "github.com/markmark345/air-line-v1-common/api/model"
 
 var lookups = []model.Lookup{
 	{
@@ -18,6 +16,13 @@ var lookups = []model.Lookup{
 		Code:     5001,
 		DescEN:   "Current user not found",
 		DescTH:   "ไม่พบบัญชีผู้ใช้ปัจจุบัน",
+	},
+	{
+		Key:      "missing_required_parameters",
+		HTTPCode: 400,
+		Code:     1101,
+		DescEN:   "Missing required parameters",
+		DescTH:   "ไม่มีพารามิเตอร์ที่ต้องการ",
 	},
 	{
 		Key:      "internal_server_error",

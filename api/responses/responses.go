@@ -2,7 +2,7 @@ package responses
 
 import (
 	"github.com/gin-gonic/gin"
-	"github.com/markmark345/air-line-v1-common/api/responses/model"
+	"github.com/markmark345/air-line-v1-common/api/model"
 )
 
 func Success(ctx *gin.Context, msgKey string, datas interface{}) {
