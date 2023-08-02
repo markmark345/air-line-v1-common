@@ -22,7 +22,7 @@ func Success(ctx *gin.Context, msgKey string, datas interface{}) {
 	ctx.JSON(dataLookup.HTTPCode, res)
 }
 
-func Failure(ctx *gin.Context, msgKey string, details interface{}) {
+func Failure(ctx *gin.Context, msgKey string, errors error) {
 	dataLookup, err := GetLookup(msgKey)
 	if err != nil {
 		ctx.JSON(500, err)
@@ -32,7 +32,9 @@ func Failure(ctx *gin.Context, msgKey string, details interface{}) {
 		Status: model.Status{
 			Code:        dataLookup.Code,
 			Description: dataLookup.DescEN,
-			Details:     details,
+			Details: model.Details{
+				Error: errors.Error(),
+			},
 		},
 	}
 
