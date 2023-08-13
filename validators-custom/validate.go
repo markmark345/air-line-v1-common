@@ -9,7 +9,6 @@ import (
 )
 
 func ValidateCustomError(ctx *gin.Context, err error) {
-
 	if err != nil {
 		for _, err := range err.(validator.ValidationErrors) {
 			switch err.Tag() {

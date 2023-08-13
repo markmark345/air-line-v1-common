@@ -53,6 +53,20 @@ var lookups = []model.Lookup{
 		DescTH:   "ไม่มีพารามิเตอร์ที่ต้องการ",
 	},
 	{
+		Key:      "missing_authroization_header",
+		HTTPCode: 401,
+		Code:     1103,
+		DescEN:   "Missing Authorization Header",
+		DescTH:   "ไม่มีส่วนหัวการอนุญาต",
+	},
+	{
+		Key:      "invalid_access_token",
+		HTTPCode: 401,
+		Code:     1104,
+		DescEN:   "Invalid Access Token",
+		DescTH:   "โทเค็นการเข้าถึงไม่ถูกต้อง",
+	},
+	{
 		Key:      "internal_server_error",
 		HTTPCode: 500,
 		Code:     9999,
