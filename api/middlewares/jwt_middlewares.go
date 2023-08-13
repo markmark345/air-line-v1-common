@@ -1,6 +1,7 @@
 package middlewares
 
 import (
+	"errors"
 	"strings"
 
 	"github.com/gin-gonic/gin"
@@ -20,7 +21,7 @@ func JwtMiddleware() gin.HandlerFunc {
 	return func(c *gin.Context) {
 		authorization := c.Request.Header.Get("Authorization")
 		if authorization == "" {
-			responses.Failure(c, "missing_authroization_header", nil)
+			responses.Failure(c, "missing_authroization_header", errors.New("missing authorization header"))
 			return
 		}
 
@@ -34,7 +35,7 @@ func JwtMiddleware() gin.HandlerFunc {
 		var p jwt.Parser
 		jwtToken, _, err := p.ParseUnverified(accessToken, &JwtClamis{})
 		if err != nil {
-			responses.Failure(c, "invalid_access_token", nil)
+			responses.Failure(c, "invalid_access_token", err)
 			return
 		}
 
