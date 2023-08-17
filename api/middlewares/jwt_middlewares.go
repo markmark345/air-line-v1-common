@@ -22,7 +22,7 @@ func JwtMiddleware() gin.HandlerFunc {
 		authorization := c.Request.Header.Get("Authorization")
 		if authorization == "" {
 			responses.Failure(c, "missing_authroization_header", errors.New("missing authorization header"))
-			return
+			c.Abort()
 		}
 
 		accessToken := authorization
@@ -36,7 +36,7 @@ func JwtMiddleware() gin.HandlerFunc {
 		jwtToken, _, err := p.ParseUnverified(accessToken, &JwtClamis{})
 		if err != nil {
 			responses.Failure(c, "invalid_access_token", err)
-			return
+			c.Abort()
 		}
 
 		jwtClaims := jwtToken.Claims.(*JwtClamis)
