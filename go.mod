@@ -1,4 +1,4 @@
-module github.com/markmark345/air-line-v1-common
+module github.com/markmark345/go-v1-common
 
 go 1.20
 

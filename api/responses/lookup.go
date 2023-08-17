@@ -1,6 +1,6 @@
 package responses
 
-import "github.com/markmark345/air-line-v1-common/api/model"
+import "github.com/markmark345/go-v1-common/api/model"
 
 var lookups = []model.Lookup{
 	{

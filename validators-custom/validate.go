@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/go-playground/validator"
-	"github.com/markmark345/air-line-v1-common/api/responses"
+	"github.com/markmark345/go-v1-common/api/responses"
 )
 
 func ValidateCustomError(ctx *gin.Context, err error) {

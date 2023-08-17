@@ -6,8 +6,8 @@ import (
 
 	"github.com/gin-gonic/gin"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/markmark345/air-line-v1-common/api/contexts"
-	"github.com/markmark345/air-line-v1-common/api/responses"
+	"github.com/markmark345/go-v1-common/api/contexts"
+	"github.com/markmark345/go-v1-common/api/responses"
 )
 
 type JwtClamis struct {
