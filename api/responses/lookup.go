@@ -53,6 +53,13 @@ var lookups = []model.Lookup{
 		DescTH:   "ไม่มีพารามิเตอร์ที่ต้องการ",
 	},
 	{
+		Key:      "expired_token",
+		HTTPCode: 400,
+		Code:     6109,
+		DescEN:   "JWT expired",
+		DescTH:   "JWT expired",
+	},
+	{
 		Key:      "missing_authroization_header",
 		HTTPCode: 401,
 		Code:     1103,

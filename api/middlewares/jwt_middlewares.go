@@ -41,12 +41,19 @@ func JwtMiddleware() gin.HandlerFunc {
 			return
 		}
 
-		jwtClaims := jwtToken.Claims.(*JwtClamis)
-		ctx = contexts.SetUseeId(ctx, jwtClaims.UuId)
+		if jwtToken.Valid {
+			jwtClaims := jwtToken.Claims.(*JwtClamis)
+			ctx = contexts.SetUseeId(ctx, jwtClaims.UuId)
 
-		req := c.Request.WithContext(ctx)
-		c.Request = req
+			req := c.Request.WithContext(ctx)
+			c.Request = req
 
-		c.Next()
+			c.Next()
+		} else if errors.Is(err, jwt.ErrTokenExpired) || errors.Is(err, jwt.ErrTokenNotValidYet) {
+			responses.Failure(c, "expired_token", err)
+			c.Abort()
+			return
+		}
+
 	}
 }
